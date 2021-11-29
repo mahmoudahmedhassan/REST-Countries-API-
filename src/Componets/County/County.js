@@ -1,10 +1,9 @@
 import { React, useState, useEffect } from "react";
-import { useParams} from "react-router";
-import {Link} from "react-router-dom"
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import classes from "./county.module.css";
 import { BsArrowLeft } from "react-icons/bs";
-
 import { Container, Row, Col, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -14,25 +13,30 @@ function County() {
 
   const fetchCounty = () => {
     axios
-      .get(`https://restcountries.eu/rest/v2/name/${name}`)
+      .get(`https://restcountries.com/v2/name/${name}`)
       .then((res) => {
         setCountry(res.data);
       })
-      .catch((err) => {console.log(err)});
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  console.log(country);
 
   useEffect(() => {
     fetchCounty();
-  }, []);
+     }, [])
 
   const data =
     country &&
     country.map((el) => (
       <>
+
         <Col xs={12} sx={12} md={12} lg={6}>
           <div className={classes.flag}>
-            <Image src={el.flag} thumbnail />
+            {
+               <Image src={ el.flag } thumbnail />  
+
+            }
           </div>
         </Col>
 
@@ -72,9 +76,9 @@ function County() {
                 {/* <li>Languages :<p>{el.languages[0].name}</p> </li> */}
 
                 <li>
-                  <span>languages</span> :{" "}
+                  <span>languages</span> :
                   {el.languages.map((el) => (
-                    <span>{el.name}</span>
+                    <span key={el.id}>{el.name}</span>
                   ))}
                 </li>
               </ul>
@@ -97,7 +101,16 @@ function County() {
   return (
     <div className={classes.main}>
       <Container>
-        <button className ={classes.back}><BsArrowLeft/> <Link to ='/'> <span>Back</span> </Link></button>
+          <Link to="/">
+
+        <button className={classes.back}>
+          <BsArrowLeft /> 
+            {" "}
+            <span>Back</span>{" "}
+        </button>
+
+        </Link>
+
       </Container>
       <Container>
         <Row>{data}</Row>

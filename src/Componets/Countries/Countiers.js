@@ -8,9 +8,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function Countiers() {
   const [countiers, setCountiers] = useState([]);
   const [filter, setFilter] = useState("");
+
   const fetchCountiers = () => {
     axios
-      .get(`https://restcountries.eu/rest/v2/all`)
+      .get(`https://restcountries.com/v2/all`) 
+
       .then((res) => {
         setCountiers(res.data);
       })
@@ -18,9 +20,11 @@ export default function Countiers() {
         console.log(err);
       });
   };
+
   useEffect(() => {
     fetchCountiers();
-  }, []);
+   }, []);
+
 
   const flitretion = (value) => {
     setFilter(value);
@@ -41,7 +45,7 @@ export default function Countiers() {
       {countiers.length > 0 ? (
         <Card Countries={handlerName()} />
       ) : (
-        <div className={classes.loading}> loadding...</div>
+        <div className={classes.loading}> loading...</div>
       )}
 
       {/* <Container>
