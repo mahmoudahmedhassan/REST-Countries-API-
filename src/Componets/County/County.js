@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
@@ -24,6 +25,7 @@ function County() {
 
   useEffect(() => {
     fetchCounty();
+    
      }, [])
 
   const data =
