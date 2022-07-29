@@ -25,8 +25,8 @@ function County() {
 
   useEffect(() => {
     fetchCounty();
-    
      }, [])
+     console.log(country)
 
   const data =
     country &&
@@ -88,8 +88,7 @@ function County() {
             <div className={classes.border_container}>
               <p>border container :</p>
               <p>
-                {" "}
-                {el.borders.map((el) => (
+                 { el.borders && el.borders.map((el) => (
                   <span className={classes.borders_value}>{el}</span>
                 ))}
               </p>

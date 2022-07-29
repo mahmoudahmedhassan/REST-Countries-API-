@@ -1,9 +1,14 @@
 .countiers{
     margin-top:50px
-
 }
 .loading{
     text-align:center;
     font-size:30px;
     font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+}
+.skelton_loading{
+    margin: 20px;
+
 }
